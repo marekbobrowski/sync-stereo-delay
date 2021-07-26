@@ -28,6 +28,12 @@ public:
 		
 	Steinberg::tresult PLUGIN_API setState (Steinberg::IBStream* state) SMTG_OVERRIDE;
 	Steinberg::tresult PLUGIN_API getState (Steinberg::IBStream* state) SMTG_OVERRIDE;
-
+protected:
+	float wet = 1;
+	float delayBufferLeft[40000];
+	float delayBufferRight[40000];
+	float feedback = 0.5;
+	unsigned delayRead = 0;
+	unsigned delayWrite = 20000;
 };
 
