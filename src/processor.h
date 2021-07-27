@@ -2,6 +2,8 @@
 
 #include "public.sdk/source/vst/vstaudioeffect.h"
 
+#define MAX_DELAY_BUFFER_SIZE 441000 // 10 times regular sample rate = max 10 seconds delay
+
 class Processor : public Steinberg::Vst::AudioEffect
 {
 public:
@@ -12,7 +14,6 @@ public:
 		return (Steinberg::Vst::IAudioProcessor*)new Processor; 
 	}
 
-
 	Steinberg::tresult PLUGIN_API initialize (Steinberg::FUnknown* context) SMTG_OVERRIDE;
 	
 	Steinberg::tresult PLUGIN_API setActive (Steinberg::TBool state) SMTG_OVERRIDE;
@@ -22,11 +23,13 @@ public:
 	Steinberg::tresult PLUGIN_API process (Steinberg::Vst::ProcessData& data) SMTG_OVERRIDE;
 		
 protected:
-	float wet = 1;
-	float delayBufferLeft[40000];
-	float delayBufferRight[40000];
-	float feedback = 0.5;
-	unsigned delayRead = 0;
-	unsigned delayWrite = 20000;
+
+	float wet;
+	float feedback;
+	unsigned delayRead;
+	unsigned delayWrite;
+
+	float* delayBufferLeft;
+	float* delayBufferRight;
 };
 

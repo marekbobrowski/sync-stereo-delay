@@ -7,7 +7,13 @@
 
 using namespace Steinberg;
 
-Processor::Processor ()
+Processor::Processor()
+	: wet(1),
+	feedback(.5),
+	delayRead(0),
+	delayWrite(20000),
+	delayBufferLeft(nullptr),
+	delayBufferRight(nullptr)
 {
 	setControllerClass (kControllerUID);
 }
@@ -30,11 +36,17 @@ tresult PLUGIN_API Processor::setActive (TBool state)
 {
 	if (state)
 	{
-		memset(delayBufferLeft, 0, 40000 * sizeof(float));
-		memset(delayBufferRight, 0, 40000 * sizeof(float));
+		delayBufferLeft = new float[MAX_DELAY_BUFFER_SIZE];
+		delayBufferRight = new float[MAX_DELAY_BUFFER_SIZE];
+		memset(delayBufferLeft, 0, MAX_DELAY_BUFFER_SIZE * sizeof(float));
+		memset(delayBufferRight, 0, MAX_DELAY_BUFFER_SIZE * sizeof(float));
 	}
 	else 
 	{
+		delete[] delayBufferLeft;
+		delete[] delayBufferRight;
+		delayBufferLeft = nullptr;
+		delayBufferRight = nullptr;
 	}
 	return AudioEffect::setActive (state);
 }
