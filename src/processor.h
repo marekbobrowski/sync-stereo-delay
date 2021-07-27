@@ -2,7 +2,7 @@
 
 #include "public.sdk/source/vst/vstaudioeffect.h"
 
-#define MAX_DELAY_BUFFER_SIZE 441000 // 10 times regular sample rate = max 10 seconds delay
+#define MAX_DELAY_BUFFER_SIZE 441000 // 10 times regular sample rate = max 10 seconds divided by 2
 
 class Processor : public Steinberg::Vst::AudioEffect
 {
@@ -24,10 +24,12 @@ public:
 		
 protected:
 
+	float dry;
 	float wet;
 	float feedback;
 	unsigned delayRead;
 	unsigned delayWrite;
+	unsigned samplesDelay;
 
 	float* delayBufferLeft;
 	float* delayBufferRight;

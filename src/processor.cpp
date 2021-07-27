@@ -8,14 +8,16 @@
 using namespace Steinberg;
 
 Processor::Processor()
-	: wet(1),
+	: dry(1),
+	wet(1),
 	feedback(.5),
 	delayRead(0),
-	delayWrite(20000),
+	samplesDelay(20000),
 	delayBufferLeft(nullptr),
 	delayBufferRight(nullptr)
 {
 	setControllerClass (kControllerUID);
+	delayWrite = samplesDelay;
 }
 
 tresult PLUGIN_API Processor::initialize (FUnknown* context)
@@ -54,6 +56,45 @@ tresult PLUGIN_API Processor::setActive (TBool state)
 
 tresult PLUGIN_API Processor::process (Vst::ProcessData& data)
 {
+	// Read inputs parameter changes
+	if (data.inputParameterChanges)
+	{
+		int32 numParamsChanged = data.inputParameterChanges->getParameterCount();
+		for (int32 index = 0; index < numParamsChanged; index++)
+		{
+			Vst::IParamValueQueue* paramQueue =
+				data.inputParameterChanges->getParameterData(index);
+			if (paramQueue)
+			{
+				Vst::ParamValue value;
+				int32 sampleOffset;
+				int32 numPoints = paramQueue->getPointCount();
+				switch (paramQueue->getParameterId())
+				{
+				case Params::feedback:
+					if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) ==
+						kResultTrue)
+					{
+						feedback = value;
+					}
+					break;
+				case Params::time:
+					if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) ==
+						kResultTrue)
+					{
+						unsigned temp = value * processSetup.sampleRate;
+						if (temp > 0)
+						{
+							samplesDelay = temp;
+						}
+					}
+					break;
+
+				}
+			}
+		}
+	}
+
 	if (data.numInputs == 0 || data.numOutputs == 0)
 	{
 		return kResultOk;
@@ -91,8 +132,8 @@ tresult PLUGIN_API Processor::process (Vst::ProcessData& data)
 			outRight[i] = inRight[i] + wet * delayBufferRight[delayRead];
 			delayBufferLeft[delayWrite] = (inLeft[i] + inRight[i]) / 2 + delayBufferRight[delayRead] * feedback;
 			delayBufferRight[delayWrite] = delayBufferLeft[delayRead] * feedback;
-			delayWrite = (delayWrite + 1) % 40000;
-			delayRead = (delayRead + 1) % 40000;
+			delayWrite = (delayWrite + 1) % (samplesDelay * 2);
+			delayRead = (delayRead + 1) % (samplesDelay * 2);
 		}
 	}
 	return kResultOk;
