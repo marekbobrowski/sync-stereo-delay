@@ -89,8 +89,23 @@ tresult PLUGIN_API Processor::process (Vst::ProcessData& data)
 						}
 					}
 					break;
+				case Params::dry:
+					if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) ==
+						kResultTrue)
+					{
+						dry = value;
+					}
+					break;
+				case Params::wet:
+					if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) ==
+						kResultTrue)
+					{
+						wet = value;
+					}
+					break;
 
 				}
+
 			}
 		}
 	}
@@ -128,8 +143,8 @@ tresult PLUGIN_API Processor::process (Vst::ProcessData& data)
 		float* outLeft = (float*)out[1];
 		for (int i = 0; i < data.numSamples; i++)
 		{
-			outLeft[i] = inLeft[i] + wet * delayBufferLeft[delayRead];
-			outRight[i] = inRight[i] + wet * delayBufferRight[delayRead];
+			outLeft[i] = dry * inLeft[i] + wet * delayBufferLeft[delayRead];
+			outRight[i] = dry * inRight[i] + wet * delayBufferRight[delayRead];
 			delayBufferLeft[delayWrite] = (inLeft[i] + inRight[i]) / 2 + delayBufferRight[delayRead] * feedback;
 			delayBufferRight[delayWrite] = delayBufferLeft[delayRead] * feedback;
 			delayWrite = (delayWrite + 1) % (samplesDelay * 2);

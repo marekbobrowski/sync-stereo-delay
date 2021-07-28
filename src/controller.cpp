@@ -17,6 +17,12 @@ tresult PLUGIN_API Controller::initialize (FUnknown* context)
 	parameters.addParameter(STR16("Tempo"), nullptr, 0, 0.5,
 		Vst::ParameterInfo::kCanAutomate, Params::tempo, 0,
 		STR16("tempo"));
+	parameters.addParameter(STR16("Dry"), nullptr, 0, .5,
+		Vst::ParameterInfo::kCanAutomate, Params::dry, 0,
+		STR16("dry"));
+	parameters.addParameter(STR16("Wet"), nullptr, 0, 0.5,
+		Vst::ParameterInfo::kCanAutomate, Params::wet, 0,
+		STR16("wet"));
 
 	setKnobMode(Vst::KnobModes::kLinearMode);
 
