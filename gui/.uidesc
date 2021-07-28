@@ -1,0 +1,121 @@
+{
+	"vstgui-ui-description": {
+		"version": "1",
+		"bitmaps": {},
+		"fonts": {},
+		"colors": {},
+		"custom": {
+			"FocusDrawing": {},
+			"VST3Editor": {
+				"Path": "D:\\Git repos\\sync-stereo-delay\\gui\\.uidesc"
+			},
+			"UIGridController": {
+				"Grids": "1x 1,5x 5,10x 10,12x 12,15x 15"
+			},
+			"UITemplateController": {
+				"SelectedTemplate": "view"
+			},
+			"UIEditController": {
+				"EditViewScale": "1",
+				"EditorSize": "0, 0, 668.8, 500",
+				"SplitViewSize_0_0": "0.7257383966244725925776037911418825387955",
+				"SplitViewSize_0_1": "0.2320675105485232037061393839394440874457",
+				"SplitViewSize_1_0": "0.4725738396624472592577603791141882538795",
+				"SplitViewSize_1_1": "0.5168776371308017036909632224706001579762",
+				"SplitViewSize_2_0": "0.5992822966507176385420052611152641475201",
+				"SplitViewSize_2_1": "0.3932416267942583920635968297574436292052",
+				"TabSwitchValue": "0",
+				"Version": "1"
+			},
+			"UIAttributesController": {},
+			"UIViewCreatorDataSource": {
+				"SelectedRow": "7"
+			}
+		},
+		"templates": {
+			"view": {
+				"attributes": {
+					"background-color": "~ BlackCColor",
+					"background-color-draw-style": "filled and stroked",
+					"class": "CViewContainer",
+					"mouse-enabled": "true",
+					"opacity": "0.769655",
+					"origin": "0, 0",
+					"size": "300, 130",
+					"transparent": "false",
+					"wants-focus": "false"
+				},
+				"children": {
+					"CKnob": {
+						"attributes": {
+							"angle-range": "270",
+							"angle-start": "135",
+							"circle-drawing": "false",
+							"class": "CKnob",
+							"corona-color": "~ GreyCColor",
+							"corona-dash-dot": "false",
+							"corona-dash-dot-lengths": "1.26,0.1",
+							"corona-drawing": "true",
+							"corona-from-center": "false",
+							"corona-inset": "8",
+							"corona-inverted": "false",
+							"corona-line-cap-butt": "false",
+							"corona-outline": "true",
+							"corona-outline-width-add": "2",
+							"default-value": "0.5",
+							"handle-color": "~ WhiteCColor",
+							"handle-line-width": "8",
+							"handle-shadow-color": "None",
+							"max-value": "1",
+							"min-value": "0",
+							"mouse-enabled": "true",
+							"opacity": "1",
+							"origin": "50, 30",
+							"size": "70, 70",
+							"skip-handle-drawing": "false",
+							"transparent": "false",
+							"value-inset": "3",
+							"wants-focus": "true",
+							"wheel-inc-value": "0.1",
+							"zoom-factor": "1.5"
+						}
+					},
+					"CKnob": {
+						"attributes": {
+							"angle-range": "270",
+							"angle-start": "135",
+							"circle-drawing": "false",
+							"class": "CKnob",
+							"corona-color": "~ GreyCColor",
+							"corona-dash-dot": "false",
+							"corona-dash-dot-lengths": "1.26,0.1",
+							"corona-drawing": "true",
+							"corona-from-center": "false",
+							"corona-inset": "8",
+							"corona-inverted": "false",
+							"corona-line-cap-butt": "false",
+							"corona-outline": "true",
+							"corona-outline-width-add": "2",
+							"default-value": "0.5",
+							"handle-color": "~ WhiteCColor",
+							"handle-line-width": "8",
+							"handle-shadow-color": "None",
+							"max-value": "1",
+							"min-value": "0",
+							"mouse-enabled": "true",
+							"opacity": "1",
+							"origin": "180, 30",
+							"size": "70, 70",
+							"skip-handle-drawing": "false",
+							"transparent": "false",
+							"value-inset": "3",
+							"wants-focus": "true",
+							"wheel-inc-value": "0.1",
+							"zoom-factor": "1.5"
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -78,7 +78,7 @@ tresult PLUGIN_API Processor::process (Vst::ProcessData& data)
 						feedback = value;
 					}
 					break;
-				case Params::time:
+				case Params::delay:
 					if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) ==
 						kResultTrue)
 					{
