@@ -4,6 +4,11 @@
 		"bitmaps": {},
 		"fonts": {},
 		"colors": {},
+		"gradients": {},
+		"control-tags": {
+			"Feedback": "1",
+			"Tempo": "2"
+		},
 		"custom": {
 			"FocusDrawing": {},
 			"VST3Editor": {
@@ -22,14 +27,29 @@
 				"SplitViewSize_0_1": "0.2320675105485232037061393839394440874457",
 				"SplitViewSize_1_0": "0.4725738396624472592577603791141882538795",
 				"SplitViewSize_1_1": "0.5168776371308017036909632224706001579762",
-				"SplitViewSize_2_0": "0.5992822966507176385420052611152641475201",
+				"SplitViewSize_2_0": "0.599581339712918715001421787746949121356",
 				"SplitViewSize_2_1": "0.3932416267942583920635968297574436292052",
-				"TabSwitchValue": "0",
+				"TabSwitchValue": "1",
 				"Version": "1"
 			},
 			"UIAttributesController": {},
 			"UIViewCreatorDataSource": {
-				"SelectedRow": "7"
+				"SelectedRow": "8"
+			},
+			"UITagsDataSource": {
+				"SelectedRow": "1"
+			},
+			"UIColorsDataSource": {
+				"SelectedRow": "-1"
+			},
+			"UIGradientsDataSource": {
+				"SelectedRow": "-1"
+			},
+			"UIBitmapsDataSource": {
+				"SelectedRow": "-1"
+			},
+			"UIFontsDataSource": {
+				"SelectedRow": "-1"
 			}
 		},
 		"templates": {
@@ -52,6 +72,7 @@
 							"angle-start": "135",
 							"circle-drawing": "false",
 							"class": "CKnob",
+							"control-tag": "Tempo",
 							"corona-color": "~ GreyCColor",
 							"corona-dash-dot": "false",
 							"corona-dash-dot-lengths": "1.26,0.1",
@@ -86,6 +107,7 @@
 							"angle-start": "135",
 							"circle-drawing": "false",
 							"class": "CKnob",
+							"control-tag": "Feedback",
 							"corona-color": "~ GreyCColor",
 							"corona-dash-dot": "false",
 							"corona-dash-dot-lengths": "1.26,0.1",
@@ -112,6 +134,80 @@
 							"wants-focus": "true",
 							"wheel-inc-value": "0.1",
 							"zoom-factor": "1.5"
+						}
+					},
+					"CTextLabel": {
+						"attributes": {
+							"back-color": "~ BlackCColor",
+							"background-offset": "0, 0",
+							"class": "CTextLabel",
+							"default-value": "0.5",
+							"font": "~ NormalFont",
+							"font-antialias": "true",
+							"font-color": "~ WhiteCColor",
+							"frame-color": "None",
+							"frame-width": "1",
+							"max-value": "1",
+							"min-value": "0",
+							"mouse-enabled": "true",
+							"opacity": "1",
+							"origin": "40, 100",
+							"round-rect-radius": "6",
+							"shadow-color": "None",
+							"size": "90, 20",
+							"style-3D-in": "false",
+							"style-3D-out": "false",
+							"style-no-draw": "false",
+							"style-no-frame": "false",
+							"style-no-text": "false",
+							"style-round-rect": "false",
+							"style-shadow-text": "false",
+							"text-alignment": "center",
+							"text-inset": "0, 0",
+							"text-rotation": "0",
+							"text-shadow-offset": "1, 1",
+							"title": "Tempo",
+							"transparent": "false",
+							"value-precision": "2",
+							"wants-focus": "false",
+							"wheel-inc-value": "0.1"
+						}
+					},
+					"CTextLabel": {
+						"attributes": {
+							"back-color": "~ BlackCColor",
+							"background-offset": "0, 0",
+							"class": "CTextLabel",
+							"default-value": "0.5",
+							"font": "~ NormalFont",
+							"font-antialias": "true",
+							"font-color": "~ WhiteCColor",
+							"frame-color": "None",
+							"frame-width": "1",
+							"max-value": "1",
+							"min-value": "0",
+							"mouse-enabled": "true",
+							"opacity": "1",
+							"origin": "170, 100",
+							"round-rect-radius": "6",
+							"shadow-color": "None",
+							"size": "90, 20",
+							"style-3D-in": "false",
+							"style-3D-out": "false",
+							"style-no-draw": "false",
+							"style-no-frame": "false",
+							"style-no-text": "false",
+							"style-round-rect": "false",
+							"style-shadow-text": "false",
+							"text-alignment": "center",
+							"text-inset": "0, 0",
+							"text-rotation": "0",
+							"text-shadow-offset": "1, 1",
+							"title": "Feedback",
+							"transparent": "false",
+							"value-precision": "2",
+							"wants-focus": "false",
+							"wheel-inc-value": "0.1"
 						}
 					}
 				}

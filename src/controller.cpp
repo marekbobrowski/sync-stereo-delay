@@ -13,10 +13,10 @@ tresult PLUGIN_API Controller::initialize (FUnknown* context)
 	}
 	parameters.addParameter(STR16("Feedback"), nullptr, 0, .5,
 		Vst::ParameterInfo::kCanAutomate, Params::feedback, 0,
-		STR16("fdb"));
-	parameters.addParameter(STR16("Time"), nullptr, 0, 0.5,
-		Vst::ParameterInfo::kCanAutomate, Params::delay, 0,
-		STR16("time"));
+		STR16("feedback"));
+	parameters.addParameter(STR16("Tempo"), nullptr, 0, 0.5,
+		Vst::ParameterInfo::kCanAutomate, Params::tempo, 0,
+		STR16("tempo"));
 
 	setKnobMode(Vst::KnobModes::kLinearMode);
 
