@@ -11,6 +11,7 @@ Processor::Processor()
 	: dry(1),
 	wet(1),
 	feedback(.5),
+	width(.5),
 	delayRead(0),
 	samplesDelay(20000),
 	delayBufferLeft(nullptr),
@@ -103,7 +104,13 @@ tresult PLUGIN_API Processor::process (Vst::ProcessData& data)
 						wet = value;
 					}
 					break;
-
+				case Params::width:
+					if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) ==
+						kResultTrue)
+					{
+						width = value;
+					}
+					break;
 				}
 
 			}
@@ -141,12 +148,14 @@ tresult PLUGIN_API Processor::process (Vst::ProcessData& data)
 		float *outRight = (float*)out[0];
 		float* inLeft = (float*)in[1];
 		float* outLeft = (float*)out[1];
+		float mixed = 0;
 		for (int i = 0; i < data.numSamples; i++)
 		{
 			outLeft[i] = dry * inLeft[i] + wet * delayBufferLeft[delayRead];
 			outRight[i] = dry * inRight[i] + wet * delayBufferRight[delayRead];
-			delayBufferLeft[delayWrite] = (inLeft[i] + inRight[i]) / 2 + delayBufferRight[delayRead] * feedback;
-			delayBufferRight[delayWrite] = delayBufferLeft[delayRead] * feedback;
+			mixed = (inLeft[i] + inRight[i]) / 2;
+			delayBufferLeft[delayWrite] = (1 - width) * mixed + delayBufferRight[delayRead] * feedback;
+			delayBufferRight[delayWrite] = width * mixed + delayBufferLeft[delayRead] * feedback;
 			delayWrite = (delayWrite + 1) % (samplesDelay * 2);
 			delayRead = (delayRead + 1) % (samplesDelay * 2);
 		}

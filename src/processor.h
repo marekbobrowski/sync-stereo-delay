@@ -27,6 +27,7 @@ protected:
 	float dry;
 	float wet;
 	float feedback;
+	float width;
 	unsigned delayRead;
 	unsigned delayWrite;
 	unsigned samplesDelay;

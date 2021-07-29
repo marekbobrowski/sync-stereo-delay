@@ -23,8 +23,18 @@ tresult PLUGIN_API Controller::initialize (FUnknown* context)
 	parameters.addParameter(STR16("Wet"), nullptr, 0, 0.5,
 		Vst::ParameterInfo::kCanAutomate, Params::wet, 0,
 		STR16("wet"));
+	parameters.addParameter(STR16("Width"), nullptr, 0, 0.5,
+		Vst::ParameterInfo::kCanAutomate, Params::width, 0,
+		STR16("width"));
 
 	setKnobMode(Vst::KnobModes::kLinearMode);
+
+	// initial program
+	setParamNormalized(Params::dry, 1);
+	setParamNormalized(Params::wet, 1);
+	setParamNormalized(Params::feedback, 0.5);
+	setParamNormalized(Params::tempo, 0.5);
+	setParamNormalized(Params::width, 0.5);
 
 	return kResultOk;
 }
