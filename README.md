@@ -1,4 +1,4 @@
-#sync-stereo-delay
+# sync-stereo-delay
 
 A VST3 delay plugin.
 Important features:
