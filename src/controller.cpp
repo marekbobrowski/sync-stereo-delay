@@ -14,8 +14,8 @@ tresult PLUGIN_API Controller::initialize (FUnknown* context)
 	parameters.addParameter(STR16("Feedback"), nullptr, 0, .5,
 		Vst::ParameterInfo::kCanAutomate, Params::feedback, 0,
 		STR16("feedback"));
-	parameters.addParameter(STR16("Tempo"), nullptr, 0, 0.5,
-		Vst::ParameterInfo::kCanAutomate, Params::tempo, 0,
+	parameters.addParameter(STR16("Time"), nullptr, 4, 0.5,
+		Vst::ParameterInfo::kCanAutomate, Params::time_, 0,
 		STR16("tempo"));
 	parameters.addParameter(STR16("Dry"), nullptr, 0, .5,
 		Vst::ParameterInfo::kCanAutomate, Params::dry, 0,
@@ -33,7 +33,7 @@ tresult PLUGIN_API Controller::initialize (FUnknown* context)
 	setParamNormalized(Params::dry, 1);
 	setParamNormalized(Params::wet, 1);
 	setParamNormalized(Params::feedback, 0.5);
-	setParamNormalized(Params::tempo, 0.5);
+	setParamNormalized(Params::time_, 0.5);
 	setParamNormalized(Params::width, 0.5);
 
 	return kResultOk;

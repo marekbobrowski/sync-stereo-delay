@@ -28,6 +28,10 @@ protected:
 	float wet;
 	float feedback;
 	float width;
+	float time;
+
+	double tempo;
+
 	unsigned delayRead;
 	unsigned delayWrite;
 	unsigned samplesDelay;

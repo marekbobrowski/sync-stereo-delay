@@ -4,6 +4,7 @@
 #include "base/source/fstreamer.h"
 #include "pluginterfaces/vst/ivstparameterchanges.h"
 #include "public.sdk/source/vst/vstaudioprocessoralgo.h";
+#include "pluginterfaces/vst/ivstprocesscontext.h"
 
 using namespace Steinberg;
 
@@ -13,11 +14,13 @@ Processor::Processor()
 	feedback(.5),
 	width(.5),
 	delayRead(0),
-	samplesDelay(20000),
+	tempo(0),
+	time(0.25),
 	delayBufferLeft(nullptr),
 	delayBufferRight(nullptr)
 {
 	setControllerClass (kControllerUID);
+	samplesDelay = MAX_DELAY_BUFFER_SIZE;
 	delayWrite = samplesDelay;
 }
 
@@ -57,6 +60,16 @@ tresult PLUGIN_API Processor::setActive (TBool state)
 
 tresult PLUGIN_API Processor::process (Vst::ProcessData& data)
 {
+	if (data.processContext && data.processContext->state & Vst::ProcessContext::kTempoValid)
+	{
+		if (data.processContext->tempo != tempo)
+		{
+			tempo = data.processContext->tempo;
+			samplesDelay = (60. / tempo) * time * 4 * processSetup.sampleRate;
+			delayWrite = samplesDelay;
+			delayRead = 0;
+		}
+	}
 	// Read inputs parameter changes
 	if (data.inputParameterChanges)
 	{
@@ -79,14 +92,17 @@ tresult PLUGIN_API Processor::process (Vst::ProcessData& data)
 						feedback = value;
 					}
 					break;
-				case Params::tempo:
+				case Params::time_:
 					if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) ==
 						kResultTrue)
 					{
-						unsigned temp = value * processSetup.sampleRate;
-						if (temp > 0)
+						time = value;
+						unsigned t = (60. / tempo) * time * 4 * processSetup.sampleRate;
+						if (t > 0)
 						{
-							samplesDelay = temp;
+							samplesDelay = t;
+							delayRead = 0;
+							delayWrite = samplesDelay;
 						}
 					}
 					break;

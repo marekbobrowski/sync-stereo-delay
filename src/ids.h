@@ -6,7 +6,7 @@
 enum Params : Steinberg::Vst::ParamID
 {
 	feedback = 1,
-	tempo = 2,
+	time_ = 2,
 	dry = 3,
 	wet = 4,
 	width = 5
