@@ -5,9 +5,9 @@ A VST3 delay plugin, whose main features are:
 * stereo processing,
 * synchronization with the host's tempo.
 
-The processing algorithm was inspired by *Fruity Delay*'s ping-pong mode.
-
 ![](https://raw.githubusercontent.com/marekbobrowski/sync-stereo-delay/master/doc/gui.png)
+
+The processing algorithm was inspired by *Fruity Delay*'s ping-pong mode.
 
 ## Setting up the project
 This instruction has been prepared only for Windows and Visual Studio.
