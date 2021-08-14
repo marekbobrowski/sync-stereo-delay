@@ -21,7 +21,7 @@ target_link_libraries(sync-stereo-delay
         vstgui_support
 )
 
-smtg_add_vst3_resource(sync-stereo-delay "gui/.uidesc")
+smtg_add_vst3_resource(sync-stereo-delay "src/gui/.uidesc")
 
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT sync-stereo-delay)
 
