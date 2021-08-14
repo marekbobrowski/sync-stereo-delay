@@ -7,6 +7,8 @@ A VST3 delay plugin, whose main features are:
 
 The processing algorithm was inspired by *Fruity Delay*'s ping-pong mode.
 
+![](https://raw.githubusercontent.com/marekbobrowski/sync-stereo-delay/master/doc/gui.png)
+
 ## Setting up the project
 This instruction has been prepared only for Windows and Visual Studio.
 1. Download the [VST3 SDK](https://new.steinberg.net/developers/).
