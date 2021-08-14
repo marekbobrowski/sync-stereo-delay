@@ -5,7 +5,7 @@ A VST3 delay plugin, whose main features are:
 * stereo processing,
 * synchronization with the host's tempo.
 
-![](https://raw.githubusercontent.com/marekbobrowski/sync-stereo-delay/master/doc/gui.png)
+<img src="https://raw.githubusercontent.com/marekbobrowski/sync-stereo-delay/master/doc/gui.png" width="310">
 
 The processing algorithm was inspired by *Fruity Delay*'s ping-pong mode.
 
