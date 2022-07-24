@@ -15,7 +15,7 @@ Processor::Processor()
 	width(.5),
 	delayRead(0),
 	tempo(0),
-	time(0.25),
+	time(0.0625),
 	delayBufferLeft(nullptr),
 	delayBufferRight(nullptr)
 {
@@ -151,14 +151,6 @@ void Processor::handleParameterChange(Vst::ProcessData& data)
 						feedback = value;
 					}
 					break;
-				case Params::time_:
-					if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) ==
-						kResultTrue)
-					{
-						time = value;
-						calcSetDelay();
-					}
-					break;
 				case Params::dry:
 					if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) ==
 						kResultTrue)
@@ -180,8 +172,16 @@ void Processor::handleParameterChange(Vst::ProcessData& data)
 						width = value;
 					}
 					break;
+				case Params::delayTime:
+					if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) ==
+						kResultTrue)
+					{
+						// the parameter value is normalized (0; 1) so we need to adjust it to time
+						time = (value + 0.125) / 2;
+						calcSetDelay();
+					}
+					break;
 				}
-
 			}
 		}
 	}

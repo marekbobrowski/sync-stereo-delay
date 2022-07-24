@@ -6,16 +6,16 @@
 		"colors": {},
 		"gradients": {},
 		"control-tags": {
+			"DelayTime": "2",
 			"Dry": "3",
 			"Feedback": "1",
-			"Tempo": "2",
 			"Wet": "4",
 			"Width": "5"
 		},
 		"custom": {
 			"FocusDrawing": {},
 			"VST3Editor": {
-				"Path": "D:\\Git repos\\sync-stereo-delay\\gui\\.uidesc"
+				"Path": "D:\\Git repos\\sync-stereo-delay\\src\\gui\\.uidesc"
 			},
 			"UIGridController": {
 				"Grids": "1x 1,5x 5,10x 10,12x 12,15x 15"
@@ -25,22 +25,22 @@
 			},
 			"UIEditController": {
 				"EditViewScale": "1",
-				"EditorSize": "0, 0, 970.4, 661.6",
-				"SplitViewSize_0_0": "0.7960981749528004414173665281850844621658",
-				"SplitViewSize_0_1": "0.1730648206419131418520862553123151883483",
-				"SplitViewSize_1_0": "0.4798615481434864715737376172910444438457",
-				"SplitViewSize_1_1": "0.5129011957205790173119908104126807302237",
-				"SplitViewSize_2_0": "0.7244435284418796472394319607701618224382",
-				"SplitViewSize_2_1": "0.2710222588623248385353292633226374164224",
-				"TabSwitchValue": "0",
+				"EditorSize": "0, 0, 1351.4, 867.6",
+				"SplitViewSize_0_0": "0.8460076045627376029045763061731122434139",
+				"SplitViewSize_0_1": "0.1307034220532319324092895840294659137726",
+				"SplitViewSize_1_0": "0.4847908745247148099011269550828728824854",
+				"SplitViewSize_1_1": "0.5097433460076045141917688852117862552404",
+				"SplitViewSize_2_0": "0.5527601006363770386187184158188756555319",
+				"SplitViewSize_2_1": "0.4439840165754032619283009353239322081208",
+				"TabSwitchValue": "1",
 				"Version": "1"
 			},
 			"UIAttributesController": {},
 			"UIViewCreatorDataSource": {
-				"SelectedRow": "14"
+				"SelectedRow": "20"
 			},
 			"UITagsDataSource": {
-				"SelectedRow": "1"
+				"SelectedRow": "0"
 			},
 			"UIColorsDataSource": {
 				"SelectedRow": "-1"
@@ -58,11 +58,11 @@
 		"templates": {
 			"view": {
 				"attributes": {
-					"background-color": "~ BlackCColor",
+					"background-color": "~ GreyCColor",
 					"background-color-draw-style": "filled and stroked",
 					"class": "CViewContainer",
 					"mouse-enabled": "true",
-					"opacity": "0.769655",
+					"opacity": "1",
 					"origin": "0, 0",
 					"size": "330, 450",
 					"transparent": "false",
@@ -119,7 +119,7 @@
 							"min-value": "0",
 							"mouse-enabled": "true",
 							"opacity": "1",
-							"origin": "120, 360",
+							"origin": "120, 390",
 							"round-rect-radius": "6",
 							"shadow-color": "None",
 							"size": "90, 20",
@@ -399,43 +399,6 @@
 							"back-color": "~ BlackCColor",
 							"background-offset": "0, 0",
 							"class": "CParamDisplay",
-							"control-tag": "Tempo",
-							"default-value": "0.5",
-							"font": "~ NormalFont",
-							"font-antialias": "true",
-							"font-color": "~ WhiteCColor",
-							"frame-color": "~ BlackCColor",
-							"frame-width": "1",
-							"max-value": "1",
-							"min-value": "0",
-							"mouse-enabled": "true",
-							"opacity": "1",
-							"origin": "120, 390",
-							"round-rect-radius": "6",
-							"shadow-color": "~ RedCColor",
-							"size": "90, 20",
-							"style-3D-in": "false",
-							"style-3D-out": "false",
-							"style-no-draw": "false",
-							"style-no-frame": "false",
-							"style-no-text": "false",
-							"style-round-rect": "false",
-							"style-shadow-text": "false",
-							"text-alignment": "center",
-							"text-inset": "0, 0",
-							"text-rotation": "0",
-							"text-shadow-offset": "1, 1",
-							"transparent": "false",
-							"value-precision": "2",
-							"wants-focus": "false",
-							"wheel-inc-value": "0.1"
-						}
-					},
-					"CParamDisplay": {
-						"attributes": {
-							"back-color": "~ BlackCColor",
-							"background-offset": "0, 0",
-							"class": "CParamDisplay",
 							"control-tag": "Feedback",
 							"default-value": "0.5",
 							"font": "~ NormalFont",
@@ -579,43 +542,31 @@
 							"wheel-inc-value": "0.1"
 						}
 					},
-					"COptionMenu": {
+					"CSegmentButton": {
 						"attributes": {
-							"back-color": "~ BlackCColor",
-							"background-offset": "0, 0",
-							"class": "COptionMenu",
-							"control-tag": "Tempo",
-							"default-value": "0.5",
+							"class": "CSegmentButton",
+							"control-tag": "DelayTime",
+							"default-value": "0",
 							"font": "~ NormalFont",
-							"font-antialias": "true",
-							"font-color": "~ WhiteCColor",
 							"frame-color": "~ BlackCColor",
 							"frame-width": "1",
-							"max-value": "5",
-							"menu-check-style": "false",
-							"menu-popup-style": "false",
+							"icon-text-margin": "0",
+							"max-value": "1",
 							"min-value": "0",
 							"mouse-enabled": "true",
 							"opacity": "1",
-							"origin": "120, 330",
-							"round-rect-radius": "6",
-							"shadow-color": "~ RedCColor",
-							"size": "90, 20",
-							"style-3D-in": "false",
-							"style-3D-out": "false",
-							"style-no-draw": "false",
-							"style-no-frame": "false",
-							"style-no-text": "false",
-							"style-round-rect": "false",
-							"style-shadow-text": "false",
+							"origin": "60, 360",
+							"round-radius": "5",
+							"segment-names": "1, 2, 3, 4, 5, 6, 7, 8, 9",
+							"selection-mode": "Single",
+							"size": "200, 20",
+							"style": "horizontal",
 							"text-alignment": "center",
-							"text-inset": "0, 0",
-							"text-rotation": "0",
-							"text-shadow-offset": "1, 1",
+							"text-color": "~ BlackCColor",
+							"text-color-highlighted": "~ WhiteCColor",
 							"transparent": "false",
-							"value-precision": "2",
 							"wants-focus": "true",
-							"wheel-inc-value": "0.1"
+							"wheel-inc-value": "0"
 						}
 					}
 				}

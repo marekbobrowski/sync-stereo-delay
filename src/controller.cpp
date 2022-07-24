@@ -14,9 +14,6 @@ tresult PLUGIN_API Controller::initialize (FUnknown* context)
 	parameters.addParameter(STR16("Feedback"), nullptr, 0, .5,
 		Vst::ParameterInfo::kCanAutomate, Params::feedback, 0,
 		STR16("feedback"));
-	parameters.addParameter(STR16("Time"), nullptr, 4, 0.5,
-		Vst::ParameterInfo::kCanAutomate, Params::time_, 0,
-		STR16("tempo"));
 	parameters.addParameter(STR16("Dry"), nullptr, 0, .5,
 		Vst::ParameterInfo::kCanAutomate, Params::dry, 0,
 		STR16("dry"));
@@ -26,6 +23,9 @@ tresult PLUGIN_API Controller::initialize (FUnknown* context)
 	parameters.addParameter(STR16("Width"), nullptr, 0, 0.5,
 		Vst::ParameterInfo::kCanAutomate, Params::width, 0,
 		STR16("width"));
+	parameters.addParameter(STR16("DelayTime"), nullptr, 8, 0,
+		Vst::ParameterInfo::kCanAutomate, Params::delayTime, 0,
+		STR16("DelayTime"));
 
 	setKnobMode(Vst::KnobModes::kLinearMode);
 
@@ -33,7 +33,7 @@ tresult PLUGIN_API Controller::initialize (FUnknown* context)
 	setParamNormalized(Params::dry, 1);
 	setParamNormalized(Params::wet, 1);
 	setParamNormalized(Params::feedback, 0.5);
-	setParamNormalized(Params::time_, 0.5);
+	setParamNormalized(Params::delayTime, 0);
 	setParamNormalized(Params::width, 0.5);
 
 	return kResultOk;

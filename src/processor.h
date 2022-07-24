@@ -14,7 +14,7 @@ public:
 		return (Steinberg::Vst::IAudioProcessor*)new Processor; 
 	}
 
-	// OVERRIDE DEFAULT VST PROCESSOR METHODSS
+	// OVERRIDE DEFAULT VST PROCESSOR METHODS
 
 	Steinberg::tresult PLUGIN_API initialize (Steinberg::FUnknown* context) SMTG_OVERRIDE;
 	

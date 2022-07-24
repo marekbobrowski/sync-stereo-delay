@@ -6,10 +6,10 @@
 enum Params : Steinberg::Vst::ParamID
 {
 	feedback = 1,
-	time_ = 2,
+	delayTime = 2,
 	dry = 3,
 	wet = 4,
-	width = 5
+	width = 5,
 };
 
 static const Steinberg::FUID kProcessorUID (0x14A8680C, 0x13FD561C, 0xA0AC2181, 0x7A0EE48B);
