@@ -5,13 +5,16 @@ A VST3 delay plugin, whose main features are:
 * stereo processing,
 * synchronization with the host's tempo.
 
-<img src="https://raw.githubusercontent.com/marekbobrowski/sync-stereo-delay/master/doc/gui.png" width="310">
-
-
-https://user-images.githubusercontent.com/49000055/180646385-a6cad221-825d-4312-9add-0ce9d9477dea.mp4
-
-
 The processing algorithm was inspired by *Fruity Delay*'s ping-pong mode.
+
+
+### Plugin showcase (turn on the audio)
+
+https://user-images.githubusercontent.com/49000055/180647126-24088419-4cc5-4388-a0de-f76da3d88f88.mp4
+
+
+
+
 
 ## Setting up the project
 This instruction has been prepared only for Windows and Visual Studio.
@@ -20,7 +23,13 @@ This instruction has been prepared only for Windows and Visual Studio.
 3. Run **Setup.bat**. This will generate Visual Studio project files in **build** folder.
 4. Run Visual Studio either as administrator or enable symlinks before launching it with normal user permissions. The symlinks are needed, so after compilation the plugin will be instantly visible from the official VST3 directory. This will enable your DAW to see it. Otherwise you will get errors when compiling.
 5. Load **build\sync-stereo-delay.sln**.
-6. Compile 😊.
+6. Build the solution :).
+7. If the build succeeded (which requires symlinks enabled or Visual Studio ran as administrator), the plugin should be visible to your DAW.
+
+### Debugging
+
+
+
 
 
 
