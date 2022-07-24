@@ -81,8 +81,8 @@ tresult PLUGIN_API Controller::setComponentState(IBStream* state)
 	// read the time value
 	if (streamer.readFloat(time) == false)
 		return kResultFalse;
-	float time2 = time * 2 - 0.125;
-	setParamNormalized(Params::delayTime, time2);
+	time = time * 2 - 0.125;
+	setParamNormalized(Params::delayTime, time);
 
 	
 
