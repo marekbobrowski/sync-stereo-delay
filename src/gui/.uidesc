@@ -134,7 +134,7 @@
 							"text-inset": "0, 0",
 							"text-rotation": "0",
 							"text-shadow-offset": "1, 1",
-							"title": "Tempo",
+							"title": "Delay Time",
 							"transparent": "false",
 							"value-precision": "2",
 							"wants-focus": "false",
