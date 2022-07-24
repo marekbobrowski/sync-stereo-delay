@@ -27,9 +27,13 @@ This instruction has been prepared only for Windows and Visual Studio.
 7. If the build succeeded (which requires symlinks enabled or Visual Studio ran as administrator), the plugin should be visible to your DAW.
 
 ### Debugging
+1. Right click on **sync-stereo-delay** project inside the solution.
+2. Go to Properties->Debugging.
+3. Set **Command** to the path of your DAW.
+4. Now when you start debugging with Visual Studio, it should open your DAW, then you can load the plugin and debug!
 
+### Some reminders
 
-
-
-
-
+#### Saving changes the in GUI
+- After applying changes in the UIDescription Editor, save to the file located in `src/gui`.
+- **Rebuild the solution.**
