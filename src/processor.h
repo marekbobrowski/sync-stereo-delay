@@ -24,6 +24,10 @@ public:
 
 	Steinberg::tresult PLUGIN_API process (Steinberg::Vst::ProcessData& data) SMTG_OVERRIDE;
 
+	Steinberg::tresult PLUGIN_API setState(Steinberg::IBStream* state) SMTG_OVERRIDE;
+
+	Steinberg::tresult PLUGIN_API getState(Steinberg::IBStream* state) SMTG_OVERRIDE;
+
 	/**
 	 * Sets the samplesDelay variable and creates an offset between "write" and "read" positions in the delay buffer.
 	 */

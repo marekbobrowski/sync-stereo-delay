@@ -12,10 +12,10 @@ Processor::Processor()
 	: dry(1),
 	wet(1),
 	feedback(.5),
-	width(.5),
+	width(1),
 	delayRead(0),
 	tempo(0),
-	time(0.0625),
+	time(0.25),
 	delayBufferLeft(nullptr),
 	delayBufferRight(nullptr)
 {
@@ -94,6 +94,57 @@ tresult PLUGIN_API Processor::canProcessSampleSize (int32 symbolicSampleSize)
 	if (symbolicSampleSize == Vst::kSample32)
 		return kResultTrue;
 	return kResultFalse;
+}
+
+tresult PLUGIN_API Processor::setState(IBStream* state)
+{
+	// called when we load a preset, the model has to be reloaded
+	if (!state)
+		return kResultFalse;
+
+	IBStreamer streamer(state, kLittleEndian);
+
+	// read the dry value
+	if (streamer.readFloat(dry) == false)
+		return kResultFalse;
+
+	// read the wet value
+	if (streamer.readFloat(wet) == false)
+		return kResultFalse;
+
+	// read the feedback value
+	if (streamer.readFloat(feedback) == false)
+		return kResultFalse;
+
+	// read the width value
+	if (streamer.readFloat(width) == false)
+		return kResultFalse;
+
+	// read the time value
+	if (streamer.readFloat(time) == false)
+		return kResultFalse;
+
+	calcSetDelay();
+	return kResultOk;
+}
+
+tresult PLUGIN_API Processor::getState(IBStream* state)
+{
+	// here we need to save the model
+
+	if (!state)
+		return kResultFalse;
+
+	IBStreamer streamer(state, kLittleEndian);
+
+	streamer.writeFloat(dry);
+	streamer.writeFloat(wet);
+	streamer.writeFloat(feedback);
+	streamer.writeFloat(width);
+	streamer.writeFloat(time);
+	calcSetDelay();
+
+	return kResultOk;
 }
 
 void Processor::setDelay(unsigned nSamples)

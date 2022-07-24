@@ -18,6 +18,8 @@ public:
 
 	Steinberg::IPlugView* PLUGIN_API createView(const char* name) SMTG_OVERRIDE;
 
+	Steinberg::tresult PLUGIN_API setComponentState(Steinberg::IBStream* state) SMTG_OVERRIDE;
+
 	DEFINE_INTERFACES
 	END_DEFINE_INTERFACES (EditController)
     DELEGATE_REFCOUNT (EditController)

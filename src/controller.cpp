@@ -1,5 +1,6 @@
 #include "controller.h"
 #include "ids.h"
+#include "base/source/fstreamer.h"
 
 using namespace Steinberg;
 
@@ -29,13 +30,6 @@ tresult PLUGIN_API Controller::initialize (FUnknown* context)
 
 	setKnobMode(Vst::KnobModes::kLinearMode);
 
-	// initial program
-	setParamNormalized(Params::dry, 1);
-	setParamNormalized(Params::wet, 1);
-	setParamNormalized(Params::feedback, 0.5);
-	setParamNormalized(Params::delayTime, 0);
-	setParamNormalized(Params::width, 0.5);
-
 	return kResultOk;
 }
 
@@ -47,4 +41,50 @@ Steinberg::IPlugView* PLUGIN_API Controller::createView(const char* name)
 		return view;
 	}
 	return nullptr;
+}
+
+
+tresult PLUGIN_API Controller::setComponentState(IBStream* state)
+{
+	// we receive the current state of the component (processor part)
+
+	if (!state)
+		return kResultFalse;
+
+	IBStreamer streamer(state, kLittleEndian);
+
+	// read the dry value
+	float dry = 0;
+	if (streamer.readFloat(dry) == false)
+		return kResultFalse;
+	setParamNormalized(Params::dry, dry);
+	
+	float wet = 0;
+	// read the wet value
+	if (streamer.readFloat(wet) == false)
+		return kResultFalse;
+	setParamNormalized(Params::wet, wet);
+
+	float feedback = 0;
+	// read the feedback value
+	if (streamer.readFloat(feedback) == false)
+		return kResultFalse;
+	setParamNormalized(Params::feedback, feedback);
+
+	float width = 0;
+	// read the width value
+	if (streamer.readFloat(width) == false)
+		return kResultFalse;
+	setParamNormalized(Params::width, width);
+
+	float time = 0;
+	// read the time value
+	if (streamer.readFloat(time) == false)
+		return kResultFalse;
+	float time2 = time * 2 - 0.125;
+	setParamNormalized(Params::delayTime, time2);
+
+	
+
+	return kResultOk;
 }
