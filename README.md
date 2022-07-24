@@ -7,6 +7,10 @@ A VST3 delay plugin, whose main features are:
 
 <img src="https://raw.githubusercontent.com/marekbobrowski/sync-stereo-delay/master/doc/gui.png" width="310">
 
+
+https://user-images.githubusercontent.com/49000055/180646385-a6cad221-825d-4312-9add-0ce9d9477dea.mp4
+
+
 The processing algorithm was inspired by *Fruity Delay*'s ping-pong mode.
 
 ## Setting up the project
