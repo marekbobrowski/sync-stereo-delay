@@ -10,11 +10,7 @@ The processing algorithm was inspired by *Fruity Delay*'s ping-pong mode.
 
 ### Plugin showcase (turn on the audio)
 
-https://user-images.githubusercontent.com/49000055/180647126-24088419-4cc5-4388-a0de-f76da3d88f88.mp4
-
-
-
-
+https://user-images.githubusercontent.com/49000055/180998183-51814369-f0da-44ad-97e7-fdce56a9cd53.mp4
 
 ## Setting up the project
 This instruction has been prepared only for Windows and Visual Studio.
